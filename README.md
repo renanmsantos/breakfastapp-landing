@@ -1,2 +1,2 @@
-# breakfastapp-landing
+# BreakfastApp
 Landing page to BreakfastApp
