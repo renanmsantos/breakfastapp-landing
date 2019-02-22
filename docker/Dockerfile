@@ -1,9 +1,11 @@
-FROM debian
+FROM nginx
 
-RUN apt-get update
-RUN apt-get install -y nginx
-RUN apt-get install -y php-fpm
+COPY ./css /usr/share/nginx/html/css
+COPY ./js /usr/share/nginx/html/js
+COPY ./img /usr/share/nginx/html/img
+COPY ./scss /usr/share/nginx/html/scss
+COPY ./vendor /usr/share/nginx/html/vendor
+COPY ./index.html /usr/share/nginx/html/
 
-COPY default /etc/nginx/sites-available/default
-CMD service nginx start && /bin/bash
-
+EXPOSE 80
+ENTRYPOINT [ "nginx","-g", "daemon off;" ]
