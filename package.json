@@ -3,6 +3,10 @@
   "name": "breakfastapp-landing",
   "version": "1.0.0",
   "description": "Fácil. Prático",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
   "keywords": [
     "css",
     "sass",
@@ -17,10 +21,13 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "5.6.3",
     "bootstrap": "4.2.1",
+    "express": "^4.16.4",
+    "nodemailer": "^5.1.1",
     "jquery": "3.3.1",
     "jquery.easing": "^1.4.1"
   },
   "devDependencies": {
+    "nodemon": "^1.18.10",
     "browser-sync": "2.26.3",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "6.0.0",
