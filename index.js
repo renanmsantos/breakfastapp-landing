@@ -52,6 +52,6 @@ app.post("/sendmail", function(req, res) {
       return res.status(200).json(response);
     }
   });
-});
+});app/
 
 app.listen(3000);

@@ -41,7 +41,7 @@ gulp.task("vendor", function() {
 // Compile SCSS
 gulp.task("css:compile", function() {
   return gulp
-    .src("./scss/**/*.scss")
+    .src("./app/scss/**/*.scss")
     .pipe(
       sass
         .sync({
@@ -55,7 +55,7 @@ gulp.task("css:compile", function() {
         cascade: false
       })
     )
-    .pipe(gulp.dest("./css"));
+    .pipe(gulp.dest("./app/css"));
 });
 
 // Minify CSS
@@ -68,7 +68,7 @@ gulp.task("css:minify", ["css:compile"], function() {
         suffix: ".min"
       })
     )
-    .pipe(gulp.dest("./css"))
+    .pipe(gulp.dest("./app/css"))
     .pipe(browserSync.stream());
 });
 
@@ -78,14 +78,14 @@ gulp.task("css", ["css:compile", "css:minify"]);
 // Minify JavaScript
 gulp.task("js:minify", function() {
   return gulp
-    .src(["./js/*.js", "!./js/*.min.js"])
+    .src(["./app/js/*.js", "!./app/js/*.min.js"])
     .pipe(uglify())
     .pipe(
       rename({
         suffix: ".min"
       })
     )
-    .pipe(gulp.dest("./js"))
+    .pipe(gulp.dest("./app/js"))
     .pipe(browserSync.stream());
 });
 
@@ -99,14 +99,14 @@ gulp.task("default", ["css", "js", "vendor"]);
 gulp.task("browserSync", function() {
   browserSync.init({
     server: {
-      baseDir: "./"
+      baseDir: "./app/"
     }
   });
 });
 
 // Dev task
 gulp.task("dev", ["css", "js", "browserSync"], function() {
-  gulp.watch("./scss/*.scss", ["css"]);
-  gulp.watch("./js/*.js", ["js"]);
-  gulp.watch("./*.html", browserSync.reload);
+  gulp.watch("./app/scss/*.scss", ["css"]);
+  gulp.watch("./app/js/*.js", ["js"]);
+  gulp.watch(".app/*.html", browserSync.reload);
 });
